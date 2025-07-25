@@ -22,10 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="min-h-screen bg-background flex flex-col">
+          <div className="h-screen bg-background flex flex-col overflow-hidden">
             <Navbar />
-            <main className="flex-1 container mx-auto px-4 py-4 sm:py-6 max-w-6xl">
-              <div className="min-h-full">
+            <main className="flex-1 container mx-auto px-4 py-2 max-w-6xl">
+              <div className="h-full">
                 {children}
               </div>
             </main>

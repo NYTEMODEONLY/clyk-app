@@ -121,12 +121,12 @@ export function UrlShortener() {
   return (
     <div className="w-full max-w-2xl mx-auto">
       <Card className="shadow-lg">
-        <CardContent className="p-6 sm:p-8">
+        <CardContent className="p-4 sm:p-6">
           {!shortenedLink ? (
-            // Form View
-            <div className="space-y-6">
-              <div className="space-y-5">
-                <div className="space-y-3">
+            // Form View - More Compact
+            <div className="space-y-4">
+              <div className="space-y-3">
+                <div className="space-y-2">
                   <label htmlFor="url" className="text-sm font-medium">
                     Enter your long URL
                   </label>
@@ -137,11 +137,11 @@ export function UrlShortener() {
                     value={url}
                     onChange={(e) => setUrl(e.target.value)}
                     disabled={isLoading}
-                    className="text-base h-12"
+                    className="text-base h-10"
                   />
                 </div>
                 
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <label htmlFor="alias" className="text-sm font-medium">
                     Custom alias (optional)
                   </label>
@@ -152,7 +152,7 @@ export function UrlShortener() {
                     value={customAlias}
                     onChange={(e) => setCustomAlias(e.target.value)}
                     disabled={isLoading}
-                    className="text-base h-12"
+                    className="text-base h-10"
                   />
                   <p className="text-xs text-muted-foreground">
                     Leave empty for auto-generated short code
@@ -164,7 +164,7 @@ export function UrlShortener() {
                 type="submit" 
                 onClick={handleSubmit}
                 disabled={isLoading || !url.trim()}
-                className="w-full h-12 text-base"
+                className="w-full h-10 text-base"
                 size="lg"
               >
                 {isLoading ? (
@@ -181,55 +181,56 @@ export function UrlShortener() {
               </Button>
             </div>
           ) : (
-            // Results View
-            <div className="space-y-6">
-              <div className="text-center space-y-4">
-                <h3 className="text-lg font-semibold">
+            // Results View - More Compact
+            <div className="space-y-4">
+              <div className="text-center space-y-3">
+                <h3 className="text-base font-semibold">
                   🎉 Your shortened URL is ready!
                 </h3>
                 
-                <div className="space-y-4">
+                <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <Input
                       value={shortenedLink.shortUrl}
                       readOnly
-                      className="flex-1 font-mono text-base h-12"
+                      className="flex-1 font-mono text-sm h-10"
                     />
                     <Button
                       onClick={() => copyToClipboard(shortenedLink.shortUrl)}
                       variant="outline"
                       size="icon"
-                      className="h-12 w-12 hover:scale-105 transition-transform duration-200"
+                      className="h-10 w-10 hover:scale-105 transition-transform duration-200"
                     >
                       <Copy className="h-4 w-4" />
                     </Button>
                   </div>
                   
                   {shortenedLink.title && (
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-xs text-muted-foreground">
                       {shortenedLink.title}
                     </p>
                   )}
                   
                   <p className="text-xs text-muted-foreground break-all">
-                    Original: {shortenedLink.originalUrl.length > 60 
-                      ? shortenedLink.originalUrl.slice(0, 60) + '...' 
+                    Original: {shortenedLink.originalUrl.length > 50 
+                      ? shortenedLink.originalUrl.slice(0, 50) + '...' 
                       : shortenedLink.originalUrl}
                   </p>
                 </div>
               </div>
 
-              <div className="flex justify-center py-4">
+              <div className="flex justify-center py-2">
                 <QRCodeDisplay 
                   value={shortenedLink.shortUrl}
-                  size={160}
+                  size={120}
                 />
               </div>
 
-              <div className="flex justify-center pt-2">
+              <div className="flex justify-center">
                 <Button
                   onClick={resetForm}
                   variant="outline"
+                  size="sm"
                   className="hover:scale-105 transition-transform duration-200"
                 >
                   <Link className="mr-2 h-4 w-4" />

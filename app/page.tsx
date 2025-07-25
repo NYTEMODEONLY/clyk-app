@@ -4,19 +4,19 @@ import { Link, QrCode, BarChart3, Zap } from 'lucide-react'
 
 export default function HomePage() {
   return (
-    <div className="h-full flex flex-col">
+    <div className="min-h-full flex flex-col">
       {/* Hero Section */}
-      <div className="text-center space-y-4 py-6 flex-shrink-0">
-        <div className="space-y-2">
+      <div className="text-center space-y-6 py-8 flex-shrink-0">
+        <div className="space-y-3">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
             Clyk
           </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             The wildly easy URL shortener with QR codes and analytics
           </p>
         </div>
         
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-muted-foreground px-4">
           <div className="flex items-center">
             <Zap className="mr-2 h-4 w-4" />
             <span>Instant shortening</span>
@@ -37,47 +37,47 @@ export default function HomePage() {
       </div>
 
       {/* Main URL Shortener */}
-      <div className="flex-1 flex items-center justify-center px-4 min-h-0">
+      <div className="flex-1 flex items-center justify-center px-4 py-8 min-h-0">
         <div className="w-full max-w-2xl">
           <UrlShortener />
         </div>
       </div>
 
       {/* Footer Features */}
-      <div className="flex-shrink-0 py-6">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-          <div className="space-y-3">
+      <div className="flex-shrink-0 py-8 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
+          <div className="space-y-4">
             <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center mx-auto">
               <Link className="h-6 w-6" />
             </div>
-            <h3 className="font-semibold">Smart Shortening</h3>
+            <h3 className="font-semibold text-base">Smart Shortening</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Create short links instantly with optional custom aliases.
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center mx-auto">
               <QrCode className="h-6 w-6" />
             </div>
-            <h3 className="font-semibold">Instant QR Codes</h3>
+            <h3 className="font-semibold text-base">Instant QR Codes</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Every short link comes with a scannable QR code.
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <div className="w-12 h-12 bg-black text-white rounded-lg flex items-center justify-center mx-auto">
               <BarChart3 className="h-6 w-6" />
             </div>
-            <h3 className="font-semibold">Rich Analytics</h3>
+            <h3 className="font-semibold text-base">Rich Analytics</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Track clicks, referrers, devices, and geographic data.
             </p>
           </div>
         </div>
 
-        <div className="text-center mt-8 space-y-2">
+        <div className="text-center mt-12 space-y-3">
           <h2 className="text-xl font-bold">
             Ready to start shortening?
           </h2>

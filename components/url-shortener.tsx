@@ -120,13 +120,13 @@ export function UrlShortener() {
 
   return (
     <div className="w-full max-w-2xl mx-auto">
-      <Card>
-        <CardContent className="p-6">
+      <Card className="shadow-lg">
+        <CardContent className="p-6 sm:p-8">
           {!shortenedLink ? (
             // Form View
             <div className="space-y-6">
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="space-y-5">
+                <div className="space-y-3">
                   <label htmlFor="url" className="text-sm font-medium">
                     Enter your long URL
                   </label>
@@ -141,7 +141,7 @@ export function UrlShortener() {
                   />
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <label htmlFor="alias" className="text-sm font-medium">
                     Custom alias (optional)
                   </label>
@@ -164,7 +164,7 @@ export function UrlShortener() {
                 type="submit" 
                 onClick={handleSubmit}
                 disabled={isLoading || !url.trim()}
-                className="w-full"
+                className="w-full h-12 text-base"
                 size="lg"
               >
                 {isLoading ? (
@@ -188,7 +188,7 @@ export function UrlShortener() {
                   🎉 Your shortened URL is ready!
                 </h3>
                 
-                <div className="space-y-3">
+                <div className="space-y-4">
                   <div className="flex items-center space-x-2">
                     <Input
                       value={shortenedLink.shortUrl}
@@ -219,14 +219,14 @@ export function UrlShortener() {
                 </div>
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center py-4">
                 <QRCodeDisplay 
                   value={shortenedLink.shortUrl}
                   size={160}
                 />
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center pt-2">
                 <Button
                   onClick={resetForm}
                   variant="outline"

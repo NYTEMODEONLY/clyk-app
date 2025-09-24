@@ -21,12 +21,14 @@
 
             switch (new_theme_style) {
                 case 'dark':
-                    css.setAttribute('href', <?= json_encode(ASSETS_FULL_URL . 'css/' . (\Altum\Router::$path == 'admin' ? 'admin-' : (settings()->theme->dark_is_enabled ? 'custom-bootstrap/' : null)) . \Altum\ThemeStyle::$themes['dark'][l('direction')] . '?v=' . PRODUCT_CODE) ?>);
-                    document.body.classList.add('cc--darkmode');
+                    // With Tailwind CSS, we just change the body class
+                    document.body.classList.add('dark');
+                    document.body.classList.remove('cc--darkmode');
                     break;
 
                 case 'light':
-                    css.setAttribute('href', <?= json_encode(ASSETS_FULL_URL . 'css/' . (\Altum\Router::$path == 'admin' ? 'admin-' : (settings()->theme->light_is_enabled ? 'custom-bootstrap/' : null)) . \Altum\ThemeStyle::$themes['light'][l('direction')] . '?v=' . PRODUCT_CODE) ?>);
+                    // With Tailwind CSS, we just change the body class
+                    document.body.classList.remove('dark');
                     document.body.classList.remove('cc--darkmode');
                     break;
             }

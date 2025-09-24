@@ -21,12 +21,12 @@ defined('ALTUMCODE') || die();
 class ThemeStyle {
     public static $themes = [
         'light' => [
-            'ltr' => 'bootstrap.min.css',
-            'rtl' => 'bootstrap-rtl.min.css'
+            'ltr' => 'output.css',
+            'rtl' => 'output.css'
         ],
         'dark' => [
-            'ltr' => 'bootstrap-dark.min.css',
-            'rtl' => 'bootstrap-dark-rtl.min.css'
+            'ltr' => 'output.css',
+            'rtl' => 'output.css'
         ],
     ];
     public static $theme = 'light';
@@ -40,7 +40,7 @@ class ThemeStyle {
     }
 
     public static function get_file() {
-        return (\Altum\Router::$path != 'admin' && settings()->theme->{self::get() . '_is_enabled'} ? 'custom-bootstrap/' : null ) . self::$themes[self::get()][l('direction')];
+        return self::$themes[self::get()][l('direction')];
     }
 
     public static function set_default($theme) {

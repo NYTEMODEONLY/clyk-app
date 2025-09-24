@@ -64,7 +64,7 @@
         <?php endif ?>
     </head>
 
-    <body class="index <?= l('direction') == 'rtl' ? 'rtl' : null ?> <?= \Altum\ThemeStyle::get() == 'dark' ? 'cc--darkmode' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
+    <body class="index <?= l('direction') == 'rtl' ? 'rtl' : null ?> <?= \Altum\ThemeStyle::get() == 'dark' ? 'dark' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
         <?php if(!empty(settings()->custom->body_content)): ?>
             <?= settings()->custom->body_content ?>
         <?php endif ?>

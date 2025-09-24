@@ -1,6 +1,6 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<div class="container">
+<div class="container mx-auto px-4 py-8">
     <?= \Altum\Alerts::output_alerts() ?>
 
     <?php
@@ -13,186 +13,155 @@
     if(settings()->links->static_is_enabled) $enabled_links[] = 'static';
     $enabled_links_count = count($enabled_links);
 
-    $col_class = match ($enabled_links_count) {
-        1 => 'col-12',
-        2,4 => 'col-12 col-sm-6',
-        3,5,6 => 'col-12 col-sm-6 col-xl-4',
-        default => null,
-    }
+    $grid_cols = match ($enabled_links_count) {
+        1 => 'grid-cols-1',
+        2, 4 => 'grid-cols-1 md:grid-cols-2',
+        3, 5, 6 => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
+        default => 'grid-cols-1',
+    };
     ?>
 
-    <div class="mb-5">
-        <div class="row m-n3 justify-content-between">
+    <div class="mb-8">
+        <div class="grid <?= $grid_cols ?> gap-6">
             <?php if(settings()->links->biolinks_is_enabled): ?>
-                <div class="<?= $col_class ?> p-3">
-                    <div class="card h-100 position-relative">
-                        <div class="card-body d-flex">
-                            <div>
-                                <div class="card border-0 mr-3 position-static" style="background: #eff6ff;">
-                                    <div class="p-3 d-flex align-items-center justify-content-between">
-                                        <a href="<?= url('links?type=biolink') ?>" class="stretched-link" style="color: #3b82f6;">
-                                            <i class="fas fa-fw fa-hashtag fa-lg"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                            <a href="<?= url('links?type=biolink') ?>" class="text-blue-600 dark:text-blue-400">
+                                <i class="fas fa-hashtag fa-lg"></i>
+                            </a>
+                        </div>
 
-                            <div>
-                                <div class="card-title h4 m-0" id="biolink_links_total">
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
-                                </div>
-                                <span class="text-muted"><?= l('dashboard.biolinks') ?></span>
+                        <div class="flex-1">
+                            <div class="text-3xl font-bold text-primary" id="biolink_links_total">
+                                <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                             </div>
+                            <p class="text-muted-foreground font-medium"><?= l('dashboard.biolinks') ?></p>
                         </div>
                     </div>
                 </div>
             <?php endif ?>
 
             <?php if(settings()->links->shortener_is_enabled): ?>
-                <div class="<?= $col_class ?> p-3">
-                    <div class="card h-100 position-relative">
-                        <div class="card-body d-flex">
-                            <div>
-                                <div class="card border-0 mr-3 position-static" style="background: #f0fdfa;">
-                                    <div class="p-3 d-flex align-items-center justify-content-between">
-                                        <a href="<?= url('links?type=link') ?>" class="stretched-link" style="color: #14b8a6;">
-                                            <i class="fas fa-fw fa-link fa-lg"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/20 rounded-lg flex items-center justify-center">
+                            <a href="<?= url('links?type=link') ?>" class="text-teal-600 dark:text-teal-400">
+                                <i class="fas fa-link fa-lg"></i>
+                            </a>
+                        </div>
 
-                            <div>
-                                <div class="card-title h4 m-0" id="link_links_total">
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
-                                </div>
-                                <span class="text-muted"><?= l('dashboard.links') ?></span>
+                        <div class="flex-1">
+                            <div class="text-3xl font-bold text-primary" id="link_links_total">
+                                <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                             </div>
+                            <p class="text-muted-foreground font-medium"><?= l('dashboard.links') ?></p>
                         </div>
                     </div>
                 </div>
             <?php endif ?>
 
             <?php if(settings()->links->files_is_enabled): ?>
-                <div class="<?= $col_class ?> p-3">
-                    <div class="card h-100 position-relative">
-                        <div class="card-body d-flex">
-                            <div>
-                                <div class="card border-0 mr-3 position-static" style="background: #ecfdf5;">
-                                    <div class="p-3 d-flex align-items-center justify-content-between">
-                                        <a href="<?= url('links?type=file') ?>" class="stretched-link" style="color: #10b981;">
-                                            <i class="fas fa-fw fa-file fa-lg"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                            <a href="<?= url('links?type=file') ?>" class="text-green-600 dark:text-green-400">
+                                <i class="fas fa-file fa-lg"></i>
+                            </a>
+                        </div>
 
-                            <div>
-                                <div class="card-title h4 m-0" id="file_links_total">
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
-                                </div>
-                                <span class="text-muted"><?= l('dashboard.file_links') ?></span>
+                        <div class="flex-1">
+                            <div class="text-3xl font-bold text-primary" id="file_links_total">
+                                <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                             </div>
+                            <p class="text-muted-foreground font-medium"><?= l('dashboard.file_links') ?></p>
                         </div>
                     </div>
                 </div>
             <?php endif ?>
 
             <?php if(settings()->links->vcards_is_enabled): ?>
-                <div class="<?= $col_class ?> p-3">
-                    <div class="card h-100 position-relative">
-                        <div class="card-body d-flex">
-                            <div>
-                                <div class="card border-0 mr-3 position-static" style="background: #ecfeff;">
-                                    <div class="p-3 d-flex align-items-center justify-content-between">
-                                        <a href="<?= url('links?type=vcard') ?>" class="stretched-link" style="color: #06b6d4;">
-                                            <i class="fas fa-fw fa-id-card fa-lg"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/20 rounded-lg flex items-center justify-center">
+                            <a href="<?= url('links?type=vcard') ?>" class="text-cyan-600 dark:text-cyan-400">
+                                <i class="fas fa-id-card fa-lg"></i>
+                            </a>
+                        </div>
 
-                            <div>
-                                <div class="card-title h4 m-0" id="vcard_links_total">
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
-                                </div>
-                                <span class="text-muted"><?= l('dashboard.vcard_links') ?></span>
+                        <div class="flex-1">
+                            <div class="text-3xl font-bold text-primary" id="vcard_links_total">
+                                <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                             </div>
+                            <p class="text-muted-foreground font-medium"><?= l('dashboard.vcard_links') ?></p>
                         </div>
                     </div>
                 </div>
             <?php endif ?>
 
             <?php if(settings()->links->events_is_enabled): ?>
-                <div class="<?= $col_class ?> p-3">
-                    <div class="card h-100 position-relative">
-                        <div class="card-body d-flex">
-                            <div>
-                                <div class="card border-0 mr-3 position-static" style="background: #eef2ff;">
-                                    <div class="p-3 d-flex align-items-center justify-content-between">
-                                        <a href="<?= url('links?type=event') ?>" class="stretched-link" style="color: #6366f1;">
-                                            <i class="fas fa-fw fa-calendar fa-lg"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/20 rounded-lg flex items-center justify-center">
+                            <a href="<?= url('links?type=event') ?>" class="text-indigo-600 dark:text-indigo-400">
+                                <i class="fas fa-calendar fa-lg"></i>
+                            </a>
+                        </div>
 
-                            <div>
-                                <div class="card-title h4 m-0" id="event_links_total">
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
-                                </div>
-                                <span class="text-muted"><?= l('dashboard.event_links') ?></span>
+                        <div class="flex-1">
+                            <div class="text-3xl font-bold text-primary" id="event_links_total">
+                                <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                             </div>
+                            <p class="text-muted-foreground font-medium"><?= l('dashboard.event_links') ?></p>
                         </div>
                     </div>
                 </div>
             <?php endif ?>
 
             <?php if(settings()->links->static_is_enabled): ?>
-                <div class="<?= $col_class ?> p-3">
-                    <div class="card h-100 position-relative">
-                        <div class="card-body d-flex">
-                            <div>
-                                <div class="card border-0 mr-3 position-static" style="background: #fdf4ff;">
-                                    <div class="p-3 d-flex align-items-center justify-content-between">
-                                        <a href="<?= url('links?type=static') ?>" class="stretched-link" style="color: #c026d3;">
-                                            <i class="fas fa-fw fa-file-code fa-lg"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="card p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
+                            <a href="<?= url('links?type=static') ?>" class="text-purple-600 dark:text-purple-400">
+                                <i class="fas fa-file-code fa-lg"></i>
+                            </a>
+                        </div>
 
-                            <div>
-                                <div class="card-title h4 m-0" id="static_links_total">
-                                    <span class="spinner-border spinner-border-sm" role="status"></span>
-                                </div>
-                                <span class="text-muted"><?= l('dashboard.static_links') ?></span>
+                        <div class="flex-1">
+                            <div class="text-3xl font-bold text-primary" id="static_links_total">
+                                <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                             </div>
+                            <p class="text-muted-foreground font-medium"><?= l('dashboard.static_links') ?></p>
                         </div>
                     </div>
                 </div>
             <?php endif ?>
         </div>
 
-        <div class="card mt-5">
-            <div class="card-body">
-                <div class="chart-container d-none" id="pageviews_chart_container">
+        <div class="card mt-8">
+            <div class="card-header">
+                <h3 class="card-title text-xl font-semibold">
+                    <?= l('dashboard.analytics') ?>
+                </h3>
+            </div>
+            <div class="card-content p-6">
+                <div class="hidden h-80" id="pageviews_chart_container">
                     <canvas id="pageviews_chart"></canvas>
                 </div>
 
-                <div id="pageviews_chart_no_data" class="d-none">
+                <div id="pageviews_chart_no_data" class="hidden">
                     <?= include_view(THEME_PATH . 'views/partials/no_chart_data.php', ['has_wrapper' => false]); ?>
                 </div>
 
-                <div id="pageviews_chart_loading" class="chart-container d-flex align-items-center justify-content-center">
-                    <span class="spinner-border spinner-border-lg" role="status"></span>
+                <div id="pageviews_chart_loading" class="h-80 flex items-center justify-center">
+                    <div class="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full"></div>
                 </div>
 
                 <?php if(settings()->main->chart_cache): ?>
-                <small class="text-muted d-none" id="pageviews_chart_help">
-                    <span data-toggle="tooltip" title="<?= sprintf(l('global.chart_help'), settings()->main->chart_cache ?? 12, settings()->main->chart_days ?? 30) ?>"><i class="fas fa-fw fa-sm fa-info-circle mr-1"></i></span>
-                    <span class="d-lg-none"><?= sprintf(l('global.chart_help'), settings()->main->chart_cache ?? 12, settings()->main->chart_days ?? 30) ?></span>
-                </small>
+                <p class="text-muted-foreground text-sm mt-4 hidden" id="pageviews_chart_help">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    <?= sprintf(l('global.chart_help'), settings()->main->chart_cache ?? 12, settings()->main->chart_days ?? 30) ?>
+                </p>
                 <?php endif ?>
             </div>
         </div>
@@ -265,16 +234,15 @@
                 }
 
                 /* Remove loading */
-                document.querySelector('#pageviews_chart_loading').classList.add('d-none');
-                document.querySelector('#pageviews_chart_loading').classList.remove('d-flex');
+                document.querySelector('#pageviews_chart_loading').classList.add('hidden');
 
                 /* Chart */
                 if(data.details.links_chart.is_empty) {
-                    document.querySelector('#pageviews_chart_no_data').classList.remove('d-none');
+                    document.querySelector('#pageviews_chart_no_data').classList.remove('hidden');
                 } else {
                     /* Display chart data */
-                    document.querySelector('#pageviews_chart_container').classList.remove('d-none');
-                    document.querySelector('#pageviews_chart_help') && document.querySelector('#pageviews_chart_help').classList.remove('d-none');
+                    document.querySelector('#pageviews_chart_container').classList.remove('hidden');
+                    document.querySelector('#pageviews_chart_help') && document.querySelector('#pageviews_chart_help').classList.remove('hidden');
 
                     let css = window.getComputedStyle(document.body);
                     let pageviews_color = css.getPropertyValue('--primary');

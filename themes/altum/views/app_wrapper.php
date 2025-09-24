@@ -43,9 +43,6 @@
     <?php endif ?>
 
     <link href="<?= ASSETS_FULL_URL . 'css/' . \Altum\ThemeStyle::get_file() . '?v=' . PRODUCT_CODE ?>" id="css_theme_style" rel="stylesheet" media="screen,print">
-    <?php foreach(['custom.css', 'libraries/select2.css'] as $file): ?>
-        <link href="<?= ASSETS_FULL_URL . 'css/' . $file . '?v=' . PRODUCT_CODE ?>" rel="stylesheet" media="screen,print">
-    <?php endforeach ?>
 
     <?= \Altum\Event::get_content('head') ?>
 
@@ -62,7 +59,7 @@
     <?php endif ?>
 </head>
 
-<body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?> app <?= \Altum\ThemeStyle::get() == 'dark' ? 'cc--darkmode' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
+<body class="<?= l('direction') == 'rtl' ? 'rtl' : null ?> app <?= \Altum\ThemeStyle::get() == 'dark' ? 'dark' : null ?>" data-theme-style="<?= \Altum\ThemeStyle::get() ?>">
     <?php if(!empty(settings()->custom->body_content)): ?>
         <?= settings()->custom->body_content ?>
     <?php endif ?>

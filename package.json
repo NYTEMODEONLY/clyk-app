@@ -1,0 +1,16 @@
+{
+  "name": "clyk-biolinks",
+  "version": "1.0.0",
+  "description": "Clyk Biolinks App with modern UI",
+  "scripts": {
+    "dev": "tailwindcss -i ./themes/altum/assets/css/tailwind.css -o ./themes/altum/assets/css/output.css --watch",
+    "build": "tailwindcss -i ./themes/altum/assets/css/tailwind.css -o ./themes/altum/assets/css/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.0.0-alpha.35",
+    "@tailwindcss/cli": "^4.0.0-alpha.35"
+  },
+  "dependencies": {
+    "lucide-react": "^0.460.0"
+  }
+}

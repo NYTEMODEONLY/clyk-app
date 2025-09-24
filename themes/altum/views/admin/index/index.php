@@ -1,194 +1,167 @@
 <?php defined('ALTUMCODE') || die() ?>
 
-<h1 class="h3 mb-4 text-truncate"><?= sprintf(l('admin_index.header'), $this->user->name) ?></h1>
+<div class="container mx-auto px-4 py-8">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold mb-2">
+            <?= sprintf(l('admin_index.header'), $this->user->name) ?>
+        </h1>
+        <p class="text-muted-foreground">
+            <?= l('admin_index.subheader') ?>
+        </p>
+    </div>
 
-<div class="mb-5 row justify-content-between">
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_index.biolink_links') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="p-2 bg-primary-100 rounded">
-                            <i class="fas fa-fw fa-sm fa-hashtag text-primary"></i>
-                        </span>
-                    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-8">
+        <!-- Biolink Links -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-hashtag fa-lg text-blue-600 dark:text-blue-400"></i>
                 </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= url('admin/links?type=biolink') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="biolink_links">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_index.biolink_links') ?>
+                    </p>
+                    <a href="<?= url('admin/links?type=biolink') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="biolink_links">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                         </span>
                     </a>
-
-                    <div class="mt-1 small text-muted">
+                    <p class="text-xs text-muted-foreground mt-1">
                         <span id="biolink_links_current_month">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
                         </span>
                         <?= mb_strtolower(l('global.date.this_month')) ?>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_index.shortened_links') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="p-2 bg-primary-100 rounded">
-                            <i class="fas fa-fw fa-sm fa-link text-primary"></i>
-                        </span>
-                    </div>
+        <!-- Shortened Links -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-link fa-lg text-teal-600 dark:text-teal-400"></i>
                 </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= url('admin/links?type=link') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="shortened_links">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_index.shortened_links') ?>
+                    </p>
+                    <a href="<?= url('admin/links?type=link') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="shortened_links">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                         </span>
                     </a>
-
-                    <div class="mt-1 small text-muted">
+                    <p class="text-xs text-muted-foreground mt-1">
                         <span id="shortened_links_current_month">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
                         </span>
                         <?= mb_strtolower(l('global.date.this_month')) ?>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_index.track_links') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="p-2 bg-primary-100 rounded">
-                            <i class="fas fa-fw fa-sm fa-chart-bar text-primary"></i>
-                        </span>
-                    </div>
+        <!-- Track Links -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-chart-bar fa-lg text-green-600 dark:text-green-400"></i>
                 </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= url('admin/statistics/track_links') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="track_links">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_index.track_links') ?>
+                    </p>
+                    <a href="<?= url('admin/statistics/track_links') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="track_links">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                         </span>
                     </a>
-
-                    <div class="mt-1 small text-muted">
+                    <p class="text-xs text-muted-foreground mt-1">
                         <span id="track_links_current_month">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
                         </span>
                         <?= mb_strtolower(l('global.date.this_month')) ?>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_qr_codes.menu') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="p-2 bg-primary-100 rounded">
-                            <i class="fas fa-fw fa-sm fa-qrcode text-primary"></i>
-                        </span>
-                    </div>
+        <!-- QR Codes -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-qrcode fa-lg text-purple-600 dark:text-purple-400"></i>
                 </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= url('admin/qr-codes') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="qr_codes">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_qr_codes.menu') ?>
+                    </p>
+                    <a href="<?= url('admin/qr-codes') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="qr_codes">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                         </span>
                     </a>
-
-                    <div class="mt-1 small text-muted">
+                    <p class="text-xs text-muted-foreground mt-1">
                         <span id="qr_codes_current_month">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
                         </span>
                         <?= mb_strtolower(l('global.date.this_month')) ?>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_domains.menu') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="p-2 bg-primary-100 rounded">
-                            <i class="fas fa-fw fa-sm fa-globe text-primary"></i>
-                        </span>
-                    </div>
+        <!-- Domains -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-cyan-100 dark:bg-cyan-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-globe fa-lg text-cyan-600 dark:text-cyan-400"></i>
                 </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= url('admin/domains') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="domains">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_domains.menu') ?>
+                    </p>
+                    <a href="<?= url('admin/domains') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="domains">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                         </span>
                     </a>
-
-                    <div class="mt-1 small text-muted">
+                    <p class="text-xs text-muted-foreground mt-1">
                         <span id="domains_current_month">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
                         </span>
                         <?= mb_strtolower(l('global.date.this_month')) ?>
-                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Users -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-users fa-lg text-indigo-600 dark:text-indigo-400"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_users.menu') ?>
+                    </p>
+                    <a href="<?= url('admin/users') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="users">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
+                        </span>
+                    </a>
+                    <p class="text-xs text-muted-foreground mt-1">
+                        <span id="users_current_month">
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
+                        </span>
+                        <?= mb_strtolower(l('global.date.this_month')) ?>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_users.menu') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                        <span class="p-2 bg-primary-100 rounded">
-                            <i class="fas fa-fw fa-sm fa-users text-primary"></i>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= url('admin/users') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="users">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
-                        </span>
-                    </a>
 
                     <div class="mt-1 small text-muted">
                         <span id="users_current_month">
@@ -199,36 +172,28 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="col-12 col-sm-6 col-xl-3 p-3 position-relative">
-        <div class="card d-flex flex-row h-100 overflow-hidden">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col text-truncate">
-                        <small class="text-muted font-weight-bold"><?= l('admin_payments.menu') ?></small>
-                    </div>
-
-                    <div class="col-auto">
-                    <span class="p-2 bg-primary-100 rounded">
-                        <i class="fas fa-fw fa-sm fa-funnel-dollar text-primary"></i>
-                    </span>
-                    </div>
+        <!-- Payments -->
+        <div class="card p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/20 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-funnel-dollar fa-lg text-emerald-600 dark:text-emerald-400"></i>
                 </div>
-
-                <div class="mt-2 text-break">
-                    <a href="<?= in_array(settings()->license->type, ['Extended License', 'extended']) ? url('admin/payments') : url('admin/settings/payment') ?>" class="stretched-link text-reset text-decoration-none">
-                        <span class="h4" id="payments">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                <div class="flex-1">
+                    <p class="text-sm font-medium text-muted-foreground mb-1">
+                        <?= l('admin_payments.menu') ?>
+                    </p>
+                    <a href="<?= in_array(settings()->license->type, ['Extended License', 'extended']) ? url('admin/payments') : url('admin/settings/payment') ?>" class="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
+                        <span id="payments">
+                            <div class="animate-spin w-6 h-6 border-2 border-primary border-t-transparent rounded-full mx-auto"></div>
                         </span>
                     </a>
-
-                    <div class="mt-1 small text-muted">
+                    <p class="text-xs text-muted-foreground mt-1">
                         <span id="payments_current_month">
-                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            <div class="animate-spin w-4 h-4 border-2 border-primary border-t-transparent rounded-full"></div>
                         </span>
                         <?= mb_strtolower(l('global.date.this_month')) ?>
-                    </div>
+                    </p>
                 </div>
             </div>
         </div>

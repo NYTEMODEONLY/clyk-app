@@ -45,9 +45,10 @@
         <?php endif ?>
 
         <link href="<?= ASSETS_FULL_URL . 'css/' . \Altum\ThemeStyle::get_file() . '?v=' . PRODUCT_CODE ?>" id="css_theme_style" rel="stylesheet" media="screen,print">
-        <?php foreach(['custom.css'] as $file): ?>
-            <link href="<?= ASSETS_FULL_URL . 'css/' . $file . '?v=' . PRODUCT_CODE ?>" rel="stylesheet" media="screen,print">
-        <?php endforeach ?>
+        <?php // Removed custom.css to prevent conflicts with Tailwind CSS ?>
+        <?php // foreach(['custom.css'] as $file): ?>
+            <?php // <link href="<?= ASSETS_FULL_URL . 'css/' . $file . '?v=' . PRODUCT_CODE ?>" rel="stylesheet" media="screen,print"> ?>
+        <?php // endforeach ?>
 
         <?= \Altum\Event::get_content('head') ?>
 

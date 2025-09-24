@@ -22,3 +22,13 @@ node_modules/
 # Environment files
 .env
 .env.local
+
+# Configuration files with sensitive data
+config.php
+config.local.php
+
+# Uploads with user data
+uploads/users/
+uploads/avatars/
+uploads/logs/
+uploads/cache/

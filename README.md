@@ -1,6 +1,6 @@
 # Clyk Biolinks App
 
-A powerful biolinks application built with PHP, designed to help users create beautiful, customizable link-in-bio pages.
+A powerful biolinks application built with PHP, designed to help users create beautiful, customizable link-in-bio pages. This is a rebuilt and enhanced version of the original Biolinks platform.
 
 ## 🚀 Features
 
@@ -80,24 +80,23 @@ This application is designed to work with cPanel's Git Version Control feature:
 
 ## 📚 Documentation
 
-- [Installation Guide](https://altumco.de/66biolinks-docs)
-- [API Documentation](https://altumco.de/66biolinks-docs/api)
-- [Plugin Development](https://altumco.de/66biolinks-docs/plugins)
-
-## 🆘 Support
-
-- Website: https://altumco.de/66biolinks
-- Documentation: https://altumco.de/66biolinks-docs
-- Changelog: https://altumco.de/66biolinks-changelog
+Documentation is being developed as part of the rebuild process. Check back soon for comprehensive guides.
 
 ## 📄 License
 
-This project is proprietary software. See the included license files for details.
+This project is open source. License details to be determined as part of the rebuild process.
 
 ## 🤝 Contributing
 
-This is a proprietary application. For contributions or custom development, please contact the developers.
+We welcome contributions! This is an active rebuild project. Please:
+
+- Fork the repository
+- Create a feature branch
+- Make your changes
+- Submit a pull request
+
+For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
-**Built by AltumCode** | **Version: 66 Biolinks**
+**Clyk Biolinks** - Rebuilt for the modern web

@@ -211,10 +211,6 @@ ALTUM;
         $error_text .= "═══════════════════════════════════════\n";
         $error_text .= "Please share this error report for debugging assistance.";
 
-        echo '<div>';
-        echo '<h1 class="text-white" style="margin-bottom: 1rem;">Internal server error</h1>';
-        echo '<p style="color: #94a3b8; margin-bottom: 2rem;">Our website is having some issues right now. We are actively working on fixing the issue.</p>';
-
         // Terminal-style error display
         echo '<div class="error-terminal">';
         echo '<div class="terminal-header">';
@@ -224,7 +220,10 @@ ALTUM;
         echo '<div class="terminal-dot dot-yellow"></div>';
         echo '<div class="terminal-dot dot-green"></div>';
         echo '</div>';
-        echo '<span class="terminal-title">Error Debug Terminal</span>';
+        echo '<div>';
+        echo '<h1 style="color: white; margin: 0; font-size: 1.25rem; font-weight: 600;">Internal Server Error</h1>';
+        echo '<p style="color: #94a3b8; margin: 0.25rem 0 0 0; font-size: 0.875rem;">Error Debug Terminal</p>';
+        echo '</div>';
         echo '</div>';
         echo '<button class="copy-button" onclick="copyErrorToClipboard()">';
         echo '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">';
@@ -239,6 +238,10 @@ ALTUM;
         echo '<div class="error-message">';
         echo '<strong>🚨 Fatal Error:</strong> ' . htmlspecialchars($last_error['message']);
         echo '</div>';
+
+        echo '<p style="color: #94a3b8; margin-bottom: 1.5rem; font-size: 0.875rem;">';
+        echo 'Our website is having some issues right now. We are actively working on fixing the issue. Please use the copy button above to share the error details for debugging assistance.';
+        echo '</p>';
 
         // Map error types to readable names
         $error_types = [
@@ -339,8 +342,6 @@ ALTUM;
         echo 'console.log("📊 Server Info:", ' . json_encode($error_data) . ');';
         echo 'console.log("📋 Copy the error report above and share it for debugging assistance.");';
         echo '</script>';
-
-        echo '</div>';
         die();
 
     }

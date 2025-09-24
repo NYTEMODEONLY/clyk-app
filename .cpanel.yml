@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/violgwsh/clyk/
+    - /bin/cp -rf * $DEPLOYPATH
+    - /bin/cp -rf .* $DEPLOYPATH

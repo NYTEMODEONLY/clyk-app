@@ -16,7 +16,9 @@
 
 defined('ALTUMCODE') || die();
 
-ini_set('display_errors', 'Off');
+// Enable error reporting for debugging
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
 /* Error handlers */
 function altumcode_shutdown_handler() {
@@ -60,6 +62,25 @@ ALTUM;
         echo '<h1 class="text-white">Internal server error</h1>';
         echo '<p>Our website is having some issues right now.</p>';
         echo '<p>We are actively working on fixing the issue.</p>';
+
+        // Add error details for debugging
+        echo '<div style="background: rgba(255,0,0,0.1); padding: 1rem; margin-top: 1rem; border-radius: 0.5rem; font-family: monospace; font-size: 0.875rem;">';
+        echo '<h3 style="color: #ff6b6b; margin-bottom: 0.5rem;">Debug Information:</h3>';
+        echo '<strong>Error Type:</strong> ' . $last_error['type'] . '<br>';
+        echo '<strong>Message:</strong> ' . htmlspecialchars($last_error['message']) . '<br>';
+        echo '<strong>File:</strong> ' . htmlspecialchars($last_error['file']) . '<br>';
+        echo '<strong>Line:</strong> ' . $last_error['line'] . '<br>';
+        echo '<strong>PHP Version:</strong> ' . phpversion() . '<br>';
+        echo '<strong>Memory Usage:</strong> ' . round(memory_get_peak_usage(true) / 1024 / 1024, 2) . ' MB<br>';
+        echo '</div>';
+
+        // Add JavaScript console logging for debugging
+        echo '<script>';
+        echo 'console.error("PHP Fatal Error:", ' . json_encode($last_error) . ');';
+        echo 'console.log("PHP Version:", "' . phpversion() . '");';
+        echo 'console.log("Memory Peak:", "' . round(memory_get_peak_usage(true) / 1024 / 1024, 2) . ' MB");';
+        echo '</script>';
+
         echo '</div>';
         die();
 

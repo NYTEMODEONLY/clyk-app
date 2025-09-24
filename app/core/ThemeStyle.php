@@ -21,12 +21,12 @@ defined('ALTUMCODE') || die();
 class ThemeStyle {
     public static $themes = [
         'light' => [
-            'ltr' => 'output.css',
-            'rtl' => 'output.css'
+            'ltr' => 'bootstrap.min.css',
+            'rtl' => 'bootstrap-rtl.min.css'
         ],
         'dark' => [
-            'ltr' => 'output.css',
-            'rtl' => 'output.css'
+            'ltr' => 'bootstrap-dark.min.css',
+            'rtl' => 'bootstrap-dark-rtl.min.css'
         ],
     ];
     public static $theme = 'light';
@@ -40,7 +40,8 @@ class ThemeStyle {
     }
 
     public static function get_file() {
-        return self::$themes[self::get()][l('direction')];
+        // Use our new Tailwind CSS for all themes
+        return 'output.css';
     }
 
     public static function set_default($theme) {

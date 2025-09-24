@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Archives
+*.zip
+
+# Temporary files
+*.tmp
+*.bak
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# Node modules (if any)
+node_modules/
+
+# Environment files
+.env
+.env.local

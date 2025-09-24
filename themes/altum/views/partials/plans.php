@@ -70,16 +70,16 @@
             <div class="col-12 col-lg-6 col-xl-4 p-3">
                 <div class="pricing-plan position-relative rounded-2x" style="<?= settings()->plan_free->color ? 'border-width: 3px; border-color: ' . settings()->plan_free->color : null ?>">
                     <?php if(settings()->plan_free->settings->tag ?? null): ?>
-                        <div class="pricing-tag"><?= settings()->plan_free->translations->{\Altum\Language::$name}->tag ?: settings()->plan_free->settings->tag ?></div>
+                        <div class="pricing-tag"><?= settings()->plan_free->translations->{\Altum\Language::$name}->tag ?? settings()->plan_free->settings->tag ?? '' ?></div>
                     <?php endif ?>
 
                     <div class="pricing-header">
-                        <p class="pricing-name" style="<?= settings()->plan_free->color ? 'color: ' . settings()->plan_free->color : null ?>"><?= settings()->plan_free->translations->{\Altum\Language::$name}->name ?: settings()->plan_free->name ?></p>
+                        <p class="pricing-name" style="<?= settings()->plan_free->color ? 'color: ' . settings()->plan_free->color : null ?>"><?= settings()->plan_free->translations->{\Altum\Language::$name}->name ?? settings()->plan_free->name ?? 'Free' ?></p>
 
-                        <div class="pricing-details"><?= settings()->plan_free->translations->{\Altum\Language::$name}->description ?: settings()->plan_free->description ?></div>
+                        <div class="pricing-details"><?= settings()->plan_free->translations->{\Altum\Language::$name}->description ?? settings()->plan_free->description ?? 'Free plan' ?></div>
 
                         <div class="pricing-price">
-                            <span class="pricing-price-amount"><?= settings()->plan_free->translations->{\Altum\Language::$name}->price ?: settings()->plan_free->price ?></span>
+                            <span class="pricing-price-amount"><?= settings()->plan_free->translations->{\Altum\Language::$name}->price ?? settings()->plan_free->price ?? '$0' ?></span>
                         </div>
                     </div>
 
@@ -280,16 +280,16 @@
             <div class="col-12 col-lg-6 col-xl-4 p-3">
                 <div class="pricing-plan position-relative rounded-2x" style="<?= settings()->plan_custom->color ? 'border-width: 3px; border-color: ' . settings()->plan_custom->color : null ?>">
                     <?php if(settings()->plan_custom->settings->tag ?? null): ?>
-                        <div class="pricing-tag"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->tag ?: settings()->plan_custom->settings->tag ?></div>
+                        <div class="pricing-tag"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->tag ?? settings()->plan_custom->settings->tag ?? '' ?></div>
                     <?php endif ?>
 
                     <div class="pricing-header">
-                        <p class="pricing-name" style="<?= settings()->plan_custom->color ? 'color: ' . settings()->plan_custom->color : null ?>"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->name ?: settings()->plan_custom->name ?></p>
+                        <p class="pricing-name" style="<?= settings()->plan_custom->color ? 'color: ' . settings()->plan_custom->color : null ?>"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->name ?? settings()->plan_custom->name ?? 'Custom' ?></p>
 
-                        <div class="pricing-details"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->description ?: settings()->plan_custom->description ?></div>
+                        <div class="pricing-details"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->description ?? settings()->plan_custom->description ?? 'Custom plan' ?></div>
 
                         <div class="pricing-price">
-                            <span class="pricing-price-amount"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->price ?: settings()->plan_custom->price ?></span>
+                            <span class="pricing-price-amount"><?= settings()->plan_custom->translations->{\Altum\Language::$name}->price ?? settings()->plan_custom->price ?? 'Contact us' ?></span>
                         </div>
                     </div>
 
@@ -318,7 +318,7 @@ $offers = [];
 if(settings()->plan_guest->status ?? null) {
     $offers[] = [
         '@type' => 'Offer',
-        'name' => settings()->plan_guest->translations->{\Altum\Language::$name}->name ?: settings()->plan_guest->name,
+        'name' => settings()->plan_guest->translations->{\Altum\Language::$name}->name ?? settings()->plan_guest->name ?? 'Guest',
         'availability' => 'https://schema.org/InStock',
         'url' => url('plan')
     ];
@@ -327,7 +327,7 @@ if(settings()->plan_guest->status ?? null) {
 if(settings()->plan_free->status) {
     $offers[] = [
         '@type' => 'Offer',
-        'name' => settings()->plan_free->translations->{\Altum\Language::$name}->name ?: settings()->plan_free->name,
+        'name' => settings()->plan_free->translations->{\Altum\Language::$name}->name ?? settings()->plan_free->name ?? 'Free',
         'availability' => 'https://schema.org/InStock',
         'url' => url('plan')
     ];
@@ -336,7 +336,7 @@ if(settings()->plan_free->status) {
 if(settings()->plan_custom->status) {
     $offers[] = [
         '@type' => 'Offer',
-        'name' => settings()->plan_custom->translations->{\Altum\Language::$name}->name ?: settings()->plan_custom->name,
+        'name' => settings()->plan_custom->translations->{\Altum\Language::$name}->name ?? settings()->plan_custom->name ?? 'Custom',
         'availability' => 'https://schema.org/InStock',
         'url' => url('plan')
     ];

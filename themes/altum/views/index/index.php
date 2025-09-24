@@ -695,28 +695,31 @@
 </section>
 <?php endif ?>
 
-    <style>
-        /* hide until words are wrapped to avoid flash */
-        .reveal-effect { visibility: hidden; }
+<?php ob_start() ?>
+<style>
+    /* hide until words are wrapped to avoid flash */
+    .reveal-effect { visibility: hidden; }
 
-        /* base state for each word */
-        .reveal-effect-prepared .reveal-effect-word {
-            opacity: 0;
-            filter: blur(6px);
-            transform: translate3d(0, 8px, 0);
-            display: inline-block;
-            transition: opacity .5s ease, filter .5s ease, transform .5s ease;
-        }
+    /* base state for each word */
+    .reveal-effect-prepared .reveal-effect-word {
+        opacity: 0;
+        filter: blur(6px);
+        transform: translate3d(0, 8px, 0);
+        display: inline-block;
+        transition: opacity .5s ease, filter .5s ease, transform .5s ease;
+    }
 
-        /* animate in when container gets .reveal-effect-in */
-        .reveal-effect-prepared.reveal-effect-in .reveal-effect-word {
-            opacity: 1;
-            filter: blur(0);
-            transform: none;
-        }
-    </style>
+    /* animate in when container gets .reveal-effect-in */
+    .reveal-effect-prepared.reveal-effect-in .reveal-effect-word {
+        opacity: 1;
+        filter: blur(0);
+        transform: none;
+    }
+</style>
+<?php \Altum\Event::add_content(ob_get_clean(), 'head') ?>
 
-    <script defer>
+<?php ob_start() ?>
+<script defer>
         /* wrap words in a text node while preserving existing HTML */
         const wrap_words_in_text_node = (text_node) => {
             /* split into words + spaces, keep spacing intact */
@@ -788,7 +791,7 @@
             intersection_observer.observe(container_node);
         });
     </script>
-<?php endif ?>
+<?php \Altum\Event::add_content(ob_get_clean(), 'javascript') ?>
 
 
 <?php if(settings()->main->display_index_testimonials): ?>
